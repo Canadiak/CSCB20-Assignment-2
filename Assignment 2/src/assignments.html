@@ -1,19 +1,85 @@
-<!DOCTYPE HTML>
-
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-	<meta charset="utf-8">
-
-	<title>CSCB20 Assigments</title>
-	<meta name="description" content="CSCB20 Assignments">
+	<meta charset="=utf-8">
+	<meta name="description" content="CSCB20 Home Page">
 	<meta name="author" content="Jeremy Downey">
-
-	<link rel="stylesheet" href="homepage.css">
-
+	<meta name="author" content="Jitong Zhang">
+	<title>CSCB20 - Introduction to Databases and Web Applications</title>
+	<link rel="stylesheet" type="text/css" href="../static/index.css">
 </head>
-
+</head>
 <body>
-
-	<p>Assignment 1</p>
+	<header id="main-header">
+			<div class="container">
+				<h1>CSCB20 - Introduction to Databases and Web Applications</h1>
+			</div>
+	</header>
+	<nav id="navbar">
+		<div class="container">
+			<ul>
+				<li><a href="index.html"> Home </a></li>
+				<li><a href="assignments.html"> Assignments </a></li>
+				<li><a href="calendar.html"> Calendar </a></li>
+				<li><a href="course_team.html"> Course Team </a></li>
+				<li><a href="feedback.html"> Anon Feedback </a></li>
+				<li><a href="labs.html"> Labs </a></li>
+				<li><a href="lectures.html"> Lectures </a></li>
+				<li><a href="#"> Markus </a></li>
+				<li><a href="news.html"> News </a></li>
+				<li><a href="#"> Piazza </a></li>
+				<li><a href="resources.html"> Resources </a></li>
+				<li><a href="tests.html"> Tests </a></li>
+			</ul>
+		</div>
+	</nav>
+	<div class="flex-container">
+		<section id="box1">
+			<h2>Overview</h2>
+				<p>Here are the assignment and exercise topics, weights, and due dates. I will be posting the exercise and assignment handouts here.  All exercises and assignments will be submitted on <a href="http://markus.utsc.utoronto.ca/cscb20w17/en">MarkUs</a>.</p>
+			<h2>Assignments</h2>
+				<table border="1">
+			        <tr>
+			          <th></th>
+			          <th>Exercise</th>
+			          <th>Topic (tentative)</th>
+			          <th>Weight</th>
+			          <th>Due Date</th>
+			          <th>Solution</th>
+			        </tr>
+			        <tr>
+			        	<td>1</td>
+			        	<td><a href="assignments/a1/">Handout</a></td>
+			        	<td>Relational Algebra and MySQL </td>
+			        	<td>15%</td>
+			        	<td>Part 1. Wednesday Feb. 1, 11.59pm, Submit to <a href="https://markus.utsc.utoronto.ca/cscb20w17/?locale=en">MarkUs</a><br/><font color='red'>UPDATED</font> Part 2 and 3. For 5% bonus Saturday Feb. 11, 11.59pm or Friday Feb. 17, 11.59 Submit to <a href="https://markus.utsc.utoronto.ca/cscb20w17/?locale=en">MarkUs</a> You can download a dumpfile for IMDB_SMALL <a href="assignments/IMDB_SMALL.sql">here</a>.<br> To use it type <code>mysql -u utorid -p < IMDB_SMALL.sql</code></td>
+			        	<td><a href="assignments/a1/soln.pdf">Solution Part 1</a></td>
+			    	</tr>
+			        <tr>
+			        	<td>2</td>
+			        	<td><a href="http://mathlab.utsc.utoronto.ca/courses/cscb20w17/bretsche/assignments/a2/a2.html">Handout</a> <a href="http://www.utsc.utoronto.ca/bretscher/b20/assignments/a2/a2.zip">a2.zip</a></td> 
+			        	<td>HTML, CSS, PHP</td>
+			        	<td>15%</td>
+			        	<td> Part 1: Worth 50% Friday March. 10, 11.59pm, Submit to <a href="https://markus.utsc.utoronto.ca/cscb20w17/?locale=en">MarkUs</a><br>Part 2: Worth 50% Friday March. 19, 11.59pm, Submit to <a href="https://markus.utsc.utoronto.ca/cscb20w17/?locale=en">MarkUs</a>--></td>
+			        	<td></td>
+			        </tr>
+			        <tr>
+			        	<td>3</td>
+			        	<td><font color='red'>New</font> <a href="http://www.utsc.utoronto.ca/bretscher/b20/assignments/a3/a3_marking_scheme.txt">Marking Scheme for A3 </a> <br><a href="http://www.utsc.utoronto.ca/bretscher/b20/assignments/a3/a3.html">Handout</a></td> 
+						<td>Web Application and Database</td>
+						<td>15%</td>
+						<td>Friday March 31, 11.59pm</td>
+			        	<td></td>        
+			    	</tr>
+			  	</table>
+				<br>
+			<h2>FAQ - Assignment 1</h2>
+				<p>Q. If the mysql portion asks for a director or actor without specifying which attributes, what should I return?<br>A. Return the first name, last name. </p>
+		</section>	
+	</div>
+	
+	<footer id="main-footer">
+		<p>Copyright &copy; 2020 Jitong Zhang & Jeremy Downey</p>
+	</footer>
 </body>
 </html>
