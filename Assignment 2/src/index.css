@@ -60,3 +60,17 @@ body{
 	padding:20px;
 	margin-top:40px;
 }
+
+/* course team flex box container */
+.flex-container-course-team {
+	display: flex;
+	flex-direction: column;
+
+}
+.flex-box-course-team {
+	background-color: lightgrey;
+	border: 5px solid orange;
+	padding: 5px;
+	margin:5px;
+}
+
