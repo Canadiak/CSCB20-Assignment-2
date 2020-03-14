@@ -5,17 +5,21 @@ body{
 	font-size:16px;
 	line-height: 1.6em;
 	margin:0;
+	/* sticky footer */
+	display: flex;
+  	min-height: 100vh;
+  	flex-direction: column;
 }
-
+/* header */
+#main-header{
+	background-color:coral;
+	color:#fff;
+}
+/* navigation bar */
 .container{
 	width:80%;
 	margin:auto;
 	overflow:hidden;
-}
-
-#main-header{
-	background-color:coral;
-	color:#fff;
 }
 
 #navbar{
@@ -38,21 +42,22 @@ body{
 	font-size:18px;
 	padding-right:15px;
 }
-
+/* main flex container */
 .flex-container {
-	display: flex;
 	width:80%;
-	margin:auto;
-	overflow:hidden;
+	justify-content: center;
+	align-items: center;
+	margin: auto;
+	overflow: hidden;
+	display: flex;
 }
 
 #box1{
-	float:left;
 	width:70%;
 	padding:0 30px;
 	box-sizing: border-box;
 }
-
+/* footer */
 #main-footer{
 	background: #333;
 	color:#fff;
@@ -60,17 +65,22 @@ body{
 	padding:20px;
 	margin-top:40px;
 }
-
 /* course team flex box container */
 .flex-container-course-team {
+	padding:0 30px;
 	display: flex;
-	flex-direction: column;
-
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
 }
+
 .flex-box-course-team {
 	background-color: lightgrey;
 	border: 5px solid orange;
 	padding: 5px;
 	margin:5px;
+	width: 300px;
+	height: 120px;
 }
 
