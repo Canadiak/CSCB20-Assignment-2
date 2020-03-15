@@ -84,3 +84,25 @@ body{
 	height: 120px;
 }
 
+/*Link colour changing */
+a:link { 
+
+	color: #07c200;
+
+}
+
+a:hover{
+	
+	color: #188a13;
+	
+}
+
+a:active{
+	
+	color: #1c5c19;
+	
+}
+
+a:visited {
+	color: #153313;
+}
