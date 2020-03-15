@@ -14,6 +14,7 @@ def generateReponse(inputString):
 		else:
 			outputString = inputString
 	else:
+	#The code on line 18 about Regex is taken from Stackoverflow from here: https://stackoverflow.com/questions/659025/how-to-remove-non-alphanumeric-characters
 		outputString = re.sub(r'[^a-zA-Z ]', '', inputString)
 	return outputString
 
