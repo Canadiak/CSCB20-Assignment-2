@@ -1,0 +1,10 @@
+Honor Code: We pledge that this program represents my own program code and that
+We have coded on my own. We received help from no one in designing and debugging
+my program. We have also read the plagiarism section in the course info sheet
+of CSC B20 and understand the consequences.
+
+Jeremy Downey 1005187432
+Jitong Zhang 100400905
+
+The code on line 18 of Question1.py about Regex is taken from Stackoverflow from here: https://stackoverflow.com/questions/659025/how-to-remove-non-alphanumeric-characters
+The code on line 9 of each HTML file is taken from https://www.w3schools.com/html/html_responsive.asp 
