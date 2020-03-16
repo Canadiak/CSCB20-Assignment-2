@@ -1,0 +1,1 @@
+As a student user, when clicking on the ‘Home’ button from the navigation bar, a page of course description with the instructor’s information must be shown and the course syllabus will also be available to be downloaded.

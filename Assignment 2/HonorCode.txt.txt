@@ -4,7 +4,7 @@ my program. We have also read the plagiarism section in the course info sheet
 of CSC B20 and understand the consequences.
 
 Jeremy Downey 1005187432
-Jitong Zhang 100400905
+Jitong Zhang 1004700905
 
 The code on line 18 of Question1.py about Regex is taken from Stackoverflow from here: https://stackoverflow.com/questions/659025/how-to-remove-non-alphanumeric-characters
 The code on line 9 of each HTML file is taken from https://www.w3schools.com/html/html_responsive.asp 

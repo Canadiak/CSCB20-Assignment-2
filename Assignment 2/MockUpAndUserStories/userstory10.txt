@@ -1,0 +1,1 @@
+As a student user, I will see the room allocation and briefing of the midterm and final (if available) through the ‘Test’ link in the navigation.

@@ -1,0 +1,1 @@
+As a student user, when I click on the lab’s page on the CSCB20 Website, all the tutorials must be shown with information of all the handouts and exercises.

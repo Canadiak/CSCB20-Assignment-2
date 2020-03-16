@@ -1,0 +1,1 @@
+As a student user, the student must be able to see the course team members, such as TAs’ and instructor’s contact information and Office Hours in a grid layout by clicking the ‘Course Team’ button in the navigation bar.

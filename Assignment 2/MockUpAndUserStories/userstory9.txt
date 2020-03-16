@@ -1,0 +1,1 @@
+As a student user, the student must be able to see descriptions of online resources as well as documentation for the software being used in this course, when clicking on the ‘Resources’ link in the navigation bar.

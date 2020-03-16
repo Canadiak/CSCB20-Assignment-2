@@ -1,0 +1,1 @@
+As a student user, I will be able to see the assignment handout with starter code (if available) under the ‘Assignments’ section of the course webpage.

@@ -1,0 +1,1 @@
+As a student user, the student must be able to see all the Office Hours for this week on Google Calendar, when clicking on the ‘Calendar’ link.

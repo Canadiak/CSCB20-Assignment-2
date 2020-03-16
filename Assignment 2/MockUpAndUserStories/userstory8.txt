@@ -1,0 +1,1 @@
+As a student user, I can click the ‘News’ button to acquire course news and announcement with publishing date and content.
