@@ -1,3 +1,4 @@
 .DS_Store
-assignment_2/.DS_Store
-assignment_3/.DS_Store
+.idea/
+__pycache__/
+
