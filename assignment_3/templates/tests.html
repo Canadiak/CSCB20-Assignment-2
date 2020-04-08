@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block content %}
+		<section id="box1">
+			<h2>Midterm</h2>
+			<p>There will be one midterm. The midterm will be 75min in length. You should go to either HW215 or HW216 depending on your last name as shown here.<br><br><img src="{{url_for('static', filename='resources/img/B20_rooms.jpg')}}" alt="B20_rooms.jpg" style="width:600px"/></p>
+			<p>Preparing for the midterm:</p>
+				<ul>
+					<li>Understand all parts of A1.</li>
+					<li>The midterm will cover everything on databases that we did from the start until part way through the week 6 lecture.</li>
+				</ul>
+			<p>Once you have done some preparation, you can practice on a previous midterm: <a href="{{url_for('static', filename='resources/B20Assignment2-1.pdf')}}">Term Test</a></p>
+		</section>	
+{% endblock %}

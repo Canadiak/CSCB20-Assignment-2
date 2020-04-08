@@ -1,0 +1,18 @@
+/* course team flex box container */
+.flex-container-course-team {
+	padding:30px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+.flex-box-course-team {
+	background-color: lightgrey;
+	border: 5px solid orange;
+	padding: 5px;
+	margin:5px;
+	width: 300px;
+	height: 120px;
+}
