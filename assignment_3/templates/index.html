@@ -1,33 +1,13 @@
 {% extends "layout.html" %}
 {% block content %}
-    <section id="box1">
-                <h2> Welcome </h2>
-                    <h3>Course Description</h3>
-                        <p>A practical introduction to databases and Web app development. Databases: terminology and applications; creating, querying and updating databases; the entity-relationship model for database design. Web documents and applications: static and interactive documents; Web servers and dynamic server-generated content; Web application development and interface with databases.</p>
-                        <h4>Prerequisite</h4>
-                            <p>Some experience with programming in an imperative language such as Python, Java or C.</p>
-                        <h4>Exclusion</h4>
-                            <p>This course may not be taken after - or concurrently with - any C- or D-level CSC course.</p>
-                        <strong>Syllabus</strong>
-                            <a href="../static/resources/B20Assignment2-1.pdf">PDF</a>
-                    <h3>Instructor</h3>
-                                Dr. Anna Bretscher
-                            <br>
-                                Email:
-                                <a href="mailto:bretscher@utsc.utoronto.ca">bretscher@utsc.utoronto.ca</a>
-                            <br>
-                                Office:
-                                 IC493 <br>
-
-                                Phone:
-                                 (416) 208-4745
-                            <br>
-                                Lectures:
-                                Mondays 9:15-11:00 in HW 216
-                            <br>
-
-                                Office Hours:
-                                W 11:00-12:00
-                            <br>
-    </section>
+<section id="box1">
+<div class="card" >
+	<label>Login:</label>
+	<form action="/submitLogin" method="POST">
+		<input class="input-box" type="text" name="username" placeholder="Username">
+		<input class="input-box" type="text" name="password" placeholder="Password">
+		<input type="submit" name="login-submit">
+	</form>
+</div>
+</section>
 {% endblock %}
