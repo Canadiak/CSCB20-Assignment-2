@@ -1,13 +1,27 @@
 {% extends "layout.html" %}
 {% block content %}
 <section id="box1">
-<div class="card" >
+	<div class="card" >
+		<label>Login:</label>
+		<form action="/submitLogin" method="POST">
+			<input class="input-box" type="text" name="username" placeholder="Username">
+			<input class="input-box" type="text" name="password" placeholder="Password">
+			<input type="submit" name="login-submit">
+		</form>
+	</div>
+	
+	<div class="card" >
 	<label>Login:</label>
-	<form action="/submitLogin" method="POST">
-		<input class="input-box" type="text" name="username" placeholder="Username">
-		<input class="input-box" type="text" name="password" placeholder="Password">
-		<input type="submit" name="login-submit">
-	</form>
-</div>
+		<form action="/submitRegistration" method="POST">
+			<input class="input-box" type="text" name="usernameRegister" placeholder="Username">
+			<input class="input-box" type="text" name="passwordRegister" placeholder="Password">
+			<select id="studentOrInstructor">
+				<option value="instructor">Instructor</option>
+				<option value="student">Student</option>
+			</select>
+			<input type="submit" name="login-submit">
+		</form>
+	</div>
+
 </section>
 {% endblock %}
