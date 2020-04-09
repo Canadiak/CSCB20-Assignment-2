@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block content %}
+<section id="box1">
+<div class="card" >
+	<label>Login:</label>
+	<form action="/submitLogin" method="POST">
+		<input class="input-box" type="text" name="username" placeholder="Username">
+		<input class="input-box" type="text" name="password" placeholder="Password">
+		<input type="submit" name="login-submit">
+	</form>
+</div>
+</section>
+{% endblock %}

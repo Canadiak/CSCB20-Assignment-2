@@ -1,0 +1,4 @@
+Notes on which team member did what work
+The hand in sheet said we have to say which work which member did
+
+Jitong did initial flask set up
