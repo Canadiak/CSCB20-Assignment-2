@@ -53,59 +53,10 @@ class User(UserMixin, db.Model):
 	
 @login_manager.user_loader
 def load_user(user_id):
-    return User.get(user_id)
+	return User.query.get(int(user_id))
 	
 @app.route('/')
-@app.route('/index')
-def home():
-	return render_template('index.html')
-
-
-@app.route('/assignments')
-def assignments():
-	return render_template('assignments.html')
-
-
-@app.route('/calendar')
-def calendar():
-	return render_template('calendar.html')
-
-
-@app.route('/course_team')
-def course_team():
-	return render_template('course_team.html')
-
-
-@app.route('/feedback')
-def feedback():
-	return render_template('feedback.html')
-
-
-@app.route('/labs')
-def labs():
-	return render_template('labs.html')
-
-
-@app.route('/lectures')
-def lectures():
-	return render_template('lectures.html')
-
-
-@app.route('/news')
-def news():
-	return render_template('news.html')
-
-
-@app.route('/resources')
-def resources():
-	return render_template('resources.html')
-
-
-@app.route('/tests')
-def tests():
-	return render_template('tests.html')
-	
-@app.route('/submit-login')
+@app.route('/login')
 def login():
 	
 	#db = get_db()
@@ -117,12 +68,75 @@ def login():
 	#cur.close()
 	#if (username == "Jeremy" and password == "password"):
 	#	return 'You are now logged in!'
-
-	return render_template('login.html')
+	
+	#Dummy login data
+	
+	return render_template('index.html')
 
 @app.route('/submitLogin', methods=['POST'])
 def submitLogin():
+	user = User.query.filter_by(username='Jeremy').first()
+	login_user(user)
 	return redirect(url_for('home'))
+	
+@app.route('/home')
+@login_required
+def home():
+	return render_template('home.html')
+
+
+@app.route('/assignments')
+@login_required
+def assignments():
+	return render_template('assignments.html')
+
+
+@app.route('/calendar')
+@login_required
+def calendar():
+	return render_template('calendar.html')
+
+
+@app.route('/course_team')
+@login_required
+def course_team():
+	return render_template('course_team.html')
+
+
+@app.route('/feedback')
+@login_required
+def feedback():
+	return render_template('feedback.html')
+
+
+@app.route('/labs')
+@login_required
+def labs():
+	return render_template('labs.html')
+
+
+@app.route('/lectures')
+@login_required
+def lectures():
+	return render_template('lectures.html')
+
+
+@app.route('/news')
+@login_required
+def news():
+	return render_template('news.html')
+
+
+@app.route('/resources')
+@login_required
+def resources():
+	return render_template('resources.html')
+
+
+@app.route('/tests')
+@login_required
+def tests():
+	return render_template('tests.html')
 
 if __name__ == '__main__':
 	app.run()
