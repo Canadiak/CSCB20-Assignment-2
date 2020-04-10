@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, redirect, request, g
+from flask import Flask, render_template, url_for, redirect, request, g, session
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from flask_wtf import FlaskForm 
@@ -6,6 +6,7 @@ from wtforms import StringField, PasswordField, BooleanField
 from wtforms.validators import InputRequired, Email, Length
 import sqlite3
 DATABASE = './login.db'
+
 #The stuff below is from the Week 13 tutorial
 # connects to the database
 def get_db():
@@ -32,6 +33,7 @@ def query_db(query, args=(), one=False):
 
 app = Flask(__name__)
 
+
 # this function gets called when the Flask app shuts down
 # tears down the database connection
 @app.teardown_appcontext
@@ -47,6 +49,8 @@ app.config['SECRET_KEY'] = 'thisissecret'
 db = SQLAlchemy(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
+
+
 
 class LoginForm(FlaskForm):
 	username = StringField('username', validators=[InputRequired(), Length(min=4, max=15)])
@@ -71,7 +75,6 @@ def load_user(user_id):
 @app.route('/')
 @app.route('/login')
 def login():
-	
 	#db = get_db()
 	#db.row_factory = make_dicts
 	#cur = db.cursor()
@@ -84,6 +87,7 @@ def login():
 	
 	#Dummy login data
 	
+	
 	return render_template('index.html')
 
 @app.route('/submitLogin', methods=['POST'])
@@ -92,21 +96,24 @@ def submitLogin():
 	db = get_db()
 	db.row_factory = make_dicts
 	cur = db.cursor()
-
+	cur.close()
 	username = request.form['username']
 	password = request.form['password']
-	cur.close()
-	user = query_db('select * from user where username = ?', [username], one=True)
-	if user:
-		if (password == user['password']):
-			user = User.query.filter_by(username=username).first()
+	
+	userLogin = query_db('select * from user where username = ?', [username], one=True)
+	db.close()
+	if userLogin:
+		if (password == userLogin['password']):
+			
+			user = userLogin
+			session["USERNAME"] = user["username"]
+			#g.user = userLogin
+			user = User.query.filter_by(username=username).first()		
 			login_user(user)
 			return redirect(url_for('home'))
 
 	return render_template('failedLogin.html')
 	
-	form = LoginForm()
-
 	# if form.validate_on_submit():
 		# print("Check1")
 		# user = User.query.filter_by(username=form.username.data).first()
@@ -122,65 +129,210 @@ def submitLogin():
 def submitRegister():
 	return render_template('failedLogin.html')
 	
-	
 @app.route('/home')
 @login_required
 def home():
-	return render_template('home.html')
+	
+	#https://www.youtube.com/watch?v=PYILMiGxpAU this video about sessions
+	if session.get("USERNAME", None) is not None:
+		username = session.get("USERNAME")
+		db = get_db()
+		db.row_factory = make_dicts
+		cur = db.cursor()
+		cur.close()
+		user = query_db('select * from user where username = ?', [username], one=True)
+		db.close()
+		print (user["username"])
+		print (user["instructorBool"])
+		return render_template('home.html', user=user)
+	
+	return '<h1>Failed login. Unknown reason. </h1>'
 
+
+@app.route('/signOut')
+@login_required
+def signOut():
+	logout_user()
+	
+	return redirect(url_for('login'))
 
 @app.route('/assignments')
 @login_required
 def assignments():
-	return render_template('assignments.html')
+
+	#https://www.youtube.com/watch?v=PYILMiGxpAU this video about sessions
+	if session.get("USERNAME", None) is not None:
+		username = session.get("USERNAME")
+		db = get_db()
+		db.row_factory = make_dicts
+		cur = db.cursor()
+		cur.close()
+		user = query_db('select * from user where username = ?', [username], one=True)
+		db.close()
+		print (user["username"])
+		print (user["instructorBool"])
+		return render_template('assignments.html', user=user)
+	
+	return '<h1>Failed login. Unknown reason. </h1>'
 
 
 @app.route('/calendar')
 @login_required
 def calendar():
-	return render_template('calendar.html')
 
+	#https://www.youtube.com/watch?v=PYILMiGxpAU this video about sessions
+	if session.get("USERNAME", None) is not None:
+		username = session.get("USERNAME")
+		db = get_db()
+		db.row_factory = make_dicts
+		cur = db.cursor()
+		cur.close()
+		user = query_db('select * from user where username = ?', [username], one=True)
+		db.close()
+		print (user["username"])
+		print (user["instructorBool"])
+		return render_template('calendar.html', user=user)
+	
+	return '<h1>Failed login. Unknown reason. </h1>'
 
 @app.route('/course_team')
 @login_required
 def course_team():
-	return render_template('course_team.html')
+
+	#https://www.youtube.com/watch?v=PYILMiGxpAU this video about sessions
+	if session.get("USERNAME", None) is not None:
+		username = session.get("USERNAME")
+		db = get_db()
+		db.row_factory = make_dicts
+		cur = db.cursor()
+		cur.close()
+		user = query_db('select * from user where username = ?', [username], one=True)
+		db.close()
+		print (user["username"])
+		print (user["instructorBool"])
+		return render_template('course_team.html', user=user)
+	
+	return '<h1>Failed login. Unknown reason. </h1>'
 
 
 @app.route('/feedback')
 @login_required
 def feedback():
-	return render_template('feedback.html')
+
+	#https://www.youtube.com/watch?v=PYILMiGxpAU this video about sessions
+	if session.get("USERNAME", None) is not None:
+		username = session.get("USERNAME")
+		db = get_db()
+		db.row_factory = make_dicts
+		cur = db.cursor()
+		cur.close()
+		user = query_db('select * from user where username = ?', [username], one=True)
+		db.close()
+		print (user["username"])
+		print (user["instructorBool"])
+		return render_template('feedback.html', user=user)
+	
+	return '<h1>Failed login. Unknown reason. </h1>'
 
 
 @app.route('/labs')
 @login_required
 def labs():
-	return render_template('labs.html')
+
+	#https://www.youtube.com/watch?v=PYILMiGxpAU this video about sessions
+	if session.get("USERNAME", None) is not None:
+		username = session.get("USERNAME")
+		db = get_db()
+		db.row_factory = make_dicts
+		cur = db.cursor()
+		cur.close()
+		user = query_db('select * from user where username = ?', [username], one=True)
+		db.close()
+		print (user["username"])
+		print (user["instructorBool"])
+		return render_template('labs.html', user=user)
+	
+	return '<h1>Failed login. Unknown reason. </h1>'
 
 
 @app.route('/lectures')
 @login_required
 def lectures():
-	return render_template('lectures.html')
+
+	#https://www.youtube.com/watch?v=PYILMiGxpAU this video about sessions
+	if session.get("USERNAME", None) is not None:
+		username = session.get("USERNAME")
+		db = get_db()
+		db.row_factory = make_dicts
+		cur = db.cursor()
+		cur.close()
+		user = query_db('select * from user where username = ?', [username], one=True)
+		db.close()
+		print (user["username"])
+		print (user["instructorBool"])
+		return render_template('lectures.html', user=user)
+	
+	return '<h1>Failed login. Unknown reason. </h1>'
 
 
 @app.route('/news')
 @login_required
 def news():
-	return render_template('news.html')
+
+	#https://www.youtube.com/watch?v=PYILMiGxpAU this video about sessions
+	if session.get("USERNAME", None) is not None:
+		username = session.get("USERNAME")
+		db = get_db()
+		db.row_factory = make_dicts
+		cur = db.cursor()
+		cur.close()
+		user = query_db('select * from user where username = ?', [username], one=True)
+		db.close()
+		print (user["username"])
+		print (user["instructorBool"])
+		return render_template('news.html', user=user)
+	
+	return '<h1>Failed login. Unknown reason. </h1>'
 
 
 @app.route('/resources')
 @login_required
 def resources():
-	return render_template('resources.html')
+
+	#https://www.youtube.com/watch?v=PYILMiGxpAU this video about sessions
+	if session.get("USERNAME", None) is not None:
+		username = session.get("USERNAME")
+		db = get_db()
+		db.row_factory = make_dicts
+		cur = db.cursor()
+		cur.close()
+		user = query_db('select * from user where username = ?', [username], one=True)
+		db.close()
+		print (user["username"])
+		print (user["instructorBool"])
+		return render_template('resources.html', user=user)
+	
+	return '<h1>Failed login. Unknown reason. </h1>'
 
 
 @app.route('/tests')
 @login_required
 def tests():
-	return render_template('tests.html')
+
+	#https://www.youtube.com/watch?v=PYILMiGxpAU this video about sessions
+	if session.get("USERNAME", None) is not None:
+		username = session.get("USERNAME")
+		db = get_db()
+		db.row_factory = make_dicts
+		cur = db.cursor()
+		cur.close()
+		user = query_db('select * from user where username = ?', [username], one=True)
+		db.close()
+		print (user["username"])
+		print (user["instructorBool"])
+		return render_template('tests.html', user=user)
+	
+	return '<h1>Failed login. Unknown reason. </h1>'
 
 if __name__ == '__main__':
 	app.run()
