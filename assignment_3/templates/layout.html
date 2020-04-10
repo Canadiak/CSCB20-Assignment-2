@@ -31,7 +31,7 @@
 				<li><a href="https://piazza.com/class/k5l8ww7kz8l6f0" target="_blank">  Piazza  </a></li>
 				<li><a href="{{ url_for('resources') }}">  Resources  </a></li>
 				<li><a href="{{ url_for('tests') }}">  Tests  </a></li>
-				
+
 				{% if user['instructorBool'] == 0 %}
 					<li><a href="{{ url_for('feedback') }}">  Anon Feedback  </a></li>
 				{% elif user['instructorBool'] == 1 %}
@@ -39,7 +39,7 @@
 				{% else %}
 					Something is wrong with instructorBool value
 				{% endif %}
-				<li><a href="{{ url_for('signOut') }}"> Sign out </a></li>
+				<li><a href="{{ url_for('signOut')}}"> Sign out </a></li>
 			</ul>
 		</div>
 	</nav>

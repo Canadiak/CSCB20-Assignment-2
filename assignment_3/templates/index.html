@@ -19,7 +19,7 @@
 	<div class="flex-container">
 		<section id="box1">
 			<div class="card" >
-				
+
 			<label>Login:</label>
 				<form action="/submitLogin" method="POST">
 					<input class="input-box" type="text" name="username" placeholder="Username">
@@ -27,14 +27,14 @@
 					<input type="submit" name="login-submit">
 				</form>
 			</div>
-			
+
 			<br><br><br>
 			<div class="card" >
 			<label>Register:</label>
 				<form action="/submitRegistration" method="POST">
 					<input class="input-box" type="text" name="usernameRegister" placeholder="Username">
 					<input class="input-box" type="text" name="passwordRegister" placeholder="Password">
-					<select id="studentOrInstructor">
+					<select id="studentOrInstructor" name="instructorRegister">
 						<option value="instructor">Instructor</option>
 						<option value="student">Student</option>
 					</select>
