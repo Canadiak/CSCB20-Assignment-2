@@ -20,19 +20,26 @@
 	<nav id="navbar">
 		<div class="container">
 			<ul>
-				<li><a href="{{ url_for('home') }}"> Home </a></li>
-				<li><a href="{{ url_for('assignments') }}"> Assignments </a></li>
-				<li><a href="{{ url_for('calendar') }}"> Calendar </a></li>
-				<li><a href="{{ url_for('course_team') }}"> Course Team </a></li>
-				<li><a href="{{ url_for('feedback') }}"> Anon Feedback </a></li>
-				<li><a href="{{ url_for('labs') }}"> Labs </a></li>
-				<li><a href="{{ url_for('lectures') }}"> Lectures </a></li>
-				<li><a href="https://markus.utsc.utoronto.ca/cscb20w20/en/assignments/1/student_interface" target="_blank"> Markus </a></li>
-				<li><a href="{{ url_for('news') }}"> News </a></li>
-				<li><a href="https://piazza.com/class/k5l8ww7kz8l6f0" target="_blank"> Piazza </a></li>
-				<li><a href="{{ url_for('resources') }}"> Resources </a></li>
-				<li><a href="{{ url_for('tests') }}"> Tests </a></li>
-				<li><a href="{{ url_for('login') }}"> Log In </a></li>
+				<li><a href="{{ url_for('home') }}">  Home  </a></li>
+				<li><a href="{{ url_for('assignments') }}">  Assignments  </a></li>
+				<li><a href="{{ url_for('calendar') }}">  Calendar  </a></li>
+				<li><a href="{{ url_for('course_team') }}">  Course Team  </a></li>
+				<li><a href="{{ url_for('labs') }}">  Labs  </a></li>
+				<li><a href="{{ url_for('lectures') }}">  Lectures  </a></li>
+				<li><a href="https://markus.utsc.utoronto.ca/cscb20w20/en/assignments/1/student_interface" target="_blank">  Markus  </a></li>
+				<li><a href="{{ url_for('news') }}">  News  </a></li>
+				<li><a href="https://piazza.com/class/k5l8ww7kz8l6f0" target="_blank">  Piazza  </a></li>
+				<li><a href="{{ url_for('resources') }}">  Resources  </a></li>
+				<li><a href="{{ url_for('tests') }}">  Tests  </a></li>
+				
+				{% if user['instructorBool'] == 0 %}
+					<li><a href="{{ url_for('feedback') }}">  Anon Feedback  </a></li>
+				{% elif user['instructorBool'] == 1 %}
+					<li><a href="{{ url_for('home') }}">  Mark Assignments  </a></li>
+				{% else %}
+					Something is wrong with instructorBool value
+				{% endif %}
+				<li><a href="{{ url_for('signOut')}}"> Sign out </a></li>
 			</ul>
 		</div>
 	</nav>
