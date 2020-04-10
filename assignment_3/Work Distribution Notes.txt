@@ -4,3 +4,4 @@ The hand in sheet said we have to say which work which member did
 Jitong did initial flask set up
 Jeremy set up login 
 Jeremy set up different views for instructors/students
+Jeremy set up registration

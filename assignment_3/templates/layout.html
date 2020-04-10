@@ -31,9 +31,10 @@
 				<li><a href="https://piazza.com/class/k5l8ww7kz8l6f0" target="_blank">  Piazza  </a></li>
 				<li><a href="{{ url_for('resources') }}">  Resources  </a></li>
 				<li><a href="{{ url_for('tests') }}">  Tests  </a></li>
-
+				
 				{% if user['instructorBool'] == 0 %}
 					<li><a href="{{ url_for('feedback') }}">  Anon Feedback  </a></li>
+					<li><a href="{{ url_for('studentMarks') }}">  Marks  </a></li>
 				{% elif user['instructorBool'] == 1 %}
 					<li><a href="{{ url_for('home') }}">  Mark Assignments  </a></li>
 				{% else %}
