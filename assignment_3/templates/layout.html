@@ -36,7 +36,7 @@
 					<li><a href="{{ url_for('feedback') }}">  Anon Feedback  </a></li>
 					<li><a href="{{ url_for('studentMarks') }}">  Marks  </a></li>
 				{% elif user['instructorBool'] == 1 %}
-					<li><a href="{{ url_for('home') }}">  Mark Assignments  </a></li>
+					<li><a href="{{ url_for('studentMarksForTeacher') }}">  Class Marks </a></li>
 				{% else %}
 					Something is wrong with instructorBool value
 				{% endif %}

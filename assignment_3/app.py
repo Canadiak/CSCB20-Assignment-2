@@ -101,13 +101,16 @@ def submitLogin():
 	password = request.form['password']
 	
 	user = query_db('select * from user where username = ?', [username], one=True)
-	
+	instructors = query_db('select * from user where instructorBool = 1')
+	studentGrades = query_db('select * from marks')
 	if user:		
 		if (password == user['password']):
 			if user["instructorBool"] == 0:
 				session["GRADES"] = query_db('select * from marks where studentId = ?', [user["id"]], one=True)
 			db.close()
 			session["USER"] = user
+			session["INSTRUCTORS"] = instructors
+			session["STUDENTGRADES"] = studentGrades
 			user = User.query.filter_by(username=username).first()		
 			login_user(user)
 			return redirect(url_for('home'))
@@ -143,32 +146,13 @@ def submitRegister():
 		return '<h1>That username is already taken. Register with a different one.'
 	
 	password = request.form['passwordRegister']
-	instructorRegister = request.form['instructorRegister']
-	if instructorRegister == 'Instructor':
-		instructorRegister2 = 1
-	else:
-		instructorRegister2 = 0
+	instructorRegister2 = int(request.form['instructorRegister'])
 		
 	
 	registerUser(username, password, instructorRegister2)
 	
-	db = get_db()
-	db.row_factory = make_dicts
-	cur2 = db.cursor()
-	userLogin = query_db('select * from user where username = ?', [username], one=True)
-	cur2.close()
-	db.close()
-	if userLogin:
-		if (password == userLogin['password']):
-			
-			user = userLogin
-			session["USERNAME"] = user["username"]
-			session["USER"] = user
-			user = User.query.filter_by(username=username).first()		
-			login_user(user)
-			return redirect(url_for('home'))
 
-	return render_template('failedLogin.html')
+	return render_template('index.html')
 	
 @app.route('/home')
 @login_required
@@ -178,13 +162,13 @@ def home():
 	
 	return render_template('home.html', user=session["USER"])
 	
-	return '<h1>Failed login. Unknown reason. </h1>'
 
 
 @app.route('/signOut')
 @login_required
 def signOut():
 	logout_user()
+	session.pop("INSTRUCTORS")
 	session.pop("USER")
 	return redirect(url_for('login'))
 	
@@ -196,8 +180,25 @@ def studentMarks():
 	
 	return render_template('studentMarks.html', user=session["USER"], grades=session["GRADES"])
 	
-	return '<h1>Failed login. Unknown reason. </h1>'
+	
+@app.route('/feedback')
+@login_required
+def feedback():
 
+	#https://www.youtube.com/watch?v=PYILMiGxpAU this video about sessions
+	
+	return render_template('feedback.html', user=session["USER"], instruct=session["INSTRUCTORS"])
+	
+@app.route('/studentMarksForTeacher')
+@login_required
+def studentMarksForTeacher():
+
+	#https://www.youtube.com/watch?v=PYILMiGxpAU this video about sessions
+	
+	return render_template('studentMarksForTeacher.html', user=session["USER"], studentGrades=session["STUDENTGRADES"])
+	
+	
+	
 @app.route('/assignments')
 @login_required
 def assignments():
@@ -206,7 +207,7 @@ def assignments():
 	
 	return render_template('assignments.html', user=session["USER"])
 	
-	return '<h1>Failed login. Unknown reason. </h1>'
+	
 
 
 @app.route('/calendar')
@@ -217,7 +218,7 @@ def calendar():
 	
 	return render_template('calendar.html', user=session["USER"])
 	
-	return '<h1>Failed login. Unknown reason. </h1>'
+	
 	
 @app.route('/course_team')
 @login_required
@@ -227,18 +228,7 @@ def course_team():
 	
 	return render_template('course_team.html', user=session["USER"])
 	
-	return '<h1>Failed login. Unknown reason. </h1>'
-
-
-@app.route('/feedback')
-@login_required
-def feedback():
-
-	#https://www.youtube.com/watch?v=PYILMiGxpAU this video about sessions
 	
-	return render_template('feedback.html', user=session["USER"])
-	
-	return '<h1>Failed login. Unknown reason. </h1>'
 
 
 @app.route('/labs')
@@ -249,7 +239,7 @@ def labs():
 	
 	return render_template('labs.html', user=session["USER"])
 	
-	return '<h1>Failed login. Unknown reason. </h1>'
+	
 
 
 @app.route('/lectures')
@@ -260,7 +250,7 @@ def lectures():
 	
 	return render_template('lectures.html', user=session["USER"])
 	
-	return '<h1>Failed login. Unknown reason. </h1>'
+	
 
 
 @app.route('/news')
@@ -271,7 +261,7 @@ def news():
 	
 	return render_template('news.html', user=session["USER"])
 	
-	return '<h1>Failed login. Unknown reason. </h1>'
+	
 
 
 @app.route('/resources')
@@ -282,7 +272,7 @@ def resources():
 	
 	return render_template('resources.html', user=session["USER"])
 	
-	return '<h1>Failed login. Unknown reason. </h1>'
+	
 
 
 @app.route('/tests')
@@ -293,7 +283,7 @@ def tests():
 	
 	return render_template('tests.html', user=session["USER"])
 	
-	return '<h1>Failed login. Unknown reason. </h1>'
+	
 
 if __name__ == '__main__':
 	app.run()

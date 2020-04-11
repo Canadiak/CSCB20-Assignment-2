@@ -3,7 +3,15 @@
     <section id="box1">
        
 	   Assignment 1 grade: {{grades['assignment1Grade']}} 
-	   <br>
+	   <form action="/submitA1Remark" method="POST">
+			<input class="input-box" type="text" name="assignment1Remark" placeholder="Remark Request A1 Description" size="100">
+			<input type="submit" name="assignment1RemarkSubmit">
+		</form>
+	   <br><br>
 	   Assignment 2 grade: {{grades['assignment2Grade']}}
+	   <form action="/submitA2Remark" method="POST">
+			<input class="input-box" type="text" name="assignment2Remark" placeholder="Remark Request A2 Description" size="100">
+			<input type="submit" name="assignment2RemarkSubmit">
+		</form>
     </section>
 {% endblock %}

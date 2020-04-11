@@ -1,10 +1,22 @@
 {% extends "layout.html" %}
 {% block content %}
     <section id="box1">
-        <form>
-            <label for="message">Message</label><br>
-            <textarea name="message" rows="10" cols="30"></textarea><br>
-            <input type="submit" value="Submit">
-        </form>
+	   <form action="/submitAnonFeedback" method="POST">
+	   
+			<select id="studentOrInstructor" name="instructorRegister">
+				{% for instructor in instruct %}
+				<option value= {{ instructor['username'] }}>{{ instructor['username'] }}</option>
+				{% endfor %}
+			</select>
+			
+			<input class="input-box" type="text" name="anonFeedback1" placeholder="What do you like about the instructor teaching?" size="150">
+		
+			<input class="input-box" type="text" name="submitAnonFeedback2" placeholder="What do you recommend the instructor to do to improve their teaching?" size="150">
+		
+			<input class="input-box" type="text" name="submitAnonFeedback3" placeholder="What do you like about the labs?" size="150">
+		
+			<input class="input-box" type="text" name="submitAnonFeedback4" placeholder="What do you recommend the lab instructors to do to improve their lab teaching?" size="150">
+			
+			<input type="submit" name="submitAnonFeedback">
     </section>
 {% endblock %}
