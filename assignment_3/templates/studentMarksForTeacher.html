@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block content %}
+    <section id="box1">
+       
+	   {% for student in studentGrades %}
+			Student ID: {{student['studentId']}}
+			<br><br>
+		    Assignment 1 grade: {{student['assignment1Grade']}} 
+		    
+		   <br>
+		   Assignment 2 grade: {{student['assignment2Grade']}}
+		   <br><br><br><br>
+		{% endfor %}
+		</section>
+{% endblock %}
