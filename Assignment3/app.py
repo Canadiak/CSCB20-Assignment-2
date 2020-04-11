@@ -5,7 +5,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField
 from wtforms.validators import InputRequired, Email, Length
 import sqlite3
-DATABASE = './login.db'
+DATABASE = './assignment3.db'
 
 #The stuff below is from the Week 13 tutorial
 # connects to the database
@@ -43,8 +43,8 @@ def close_connection(exception):
 	   # close the database if we are connected to it
 		db.close()
 
-#It makes the database login.db and initiates the login manager. Source: https://www.youtube.com/watch?v=8aTnmsDMldY
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///login.db'
+#It makes the database assignment3.db and initiates the login manager. Source: https://www.youtube.com/watch?v=8aTnmsDMldY
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///assignment3.db'
 app.config['SECRET_KEY'] = 'thisissecret'
 db = SQLAlchemy(app)
 login_manager = LoginManager()
